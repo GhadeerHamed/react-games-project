@@ -1,6 +1,5 @@
 import {
   Button,
-  ListItem,
   Menu,
   MenuButton,
   MenuItem,
@@ -14,7 +13,10 @@ interface Props {
   selectedPlatform: Platform | null;
 }
 
-export const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+export const PlatformSelector = ({
+  onSelectPlatform,
+  selectedPlatform,
+}: Props) => {
   const { data, error } = usePlatforms();
 
   if (error) return null;
@@ -22,7 +24,7 @@ export const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {selectedPlatform?.name || 'Platform'}
+        {selectedPlatform?.name || "Platform"}
       </MenuButton>
       <MenuList>
         {data?.results.map((platform) => (
