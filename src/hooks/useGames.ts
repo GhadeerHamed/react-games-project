@@ -16,24 +16,14 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) => {
-  const queryCacheExtra =
-    "" +
-    (gameQuery.genre?.id ? "g-" + gameQuery.genre?.id : "") +
-    (gameQuery.platform?.id ? "p-" + gameQuery.platform?.id : "") +
-    (gameQuery.sortOrder ? "o-" + gameQuery.sortOrder : "") +
-    (gameQuery.searchText ? "s-" + gameQuery.searchText : "");
-
-  const queryCacheKey = queryCacheExtra
-    ? [CACHE_KEY_GAMES, queryCacheExtra]
-    : [CACHE_KEY_GAMES];
 
   return useInfiniteQuery<FetchResponse<Game>, Error>({
-    queryKey: queryCacheKey,
+    queryKey: [CACHE_KEY_GAMES, gameQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          genres: gameQuery.genre?.id,
-          parent_platforms: gameQuery.platform?.id,
+          genres: gameQuery.genreId,
+          parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           page: pageParam,
