@@ -1,4 +1,5 @@
 import genres from "../data/genres";
+import ms from "ms";
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api-client";
 import { CACHE_KEY_GENRES } from "../services/constants";
@@ -15,7 +16,7 @@ const useGenres = () =>
   useQuery({
     queryKey: [CACHE_KEY_GENRES],
     queryFn: apiClient.getAll,
-    staleTime: 1000 * 60 * 60 * 24, // 24 Hours
+    staleTime: ms("24h"),
     initialData: genres,
   });
 
