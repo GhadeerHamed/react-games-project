@@ -4,7 +4,6 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { GameQuery } from "../App";
-import {FetchResponse} from "../hooks/useData";
 
 interface Props {
   gameQuery: GameQuery;
