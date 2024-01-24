@@ -1,22 +1,22 @@
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
-import {Heading, Spinner, Text} from "@chakra-ui/react";
-
+import { Heading, Spinner, Text } from "@chakra-ui/react";
+import { ExpandableText } from "../components/ExpandableText";
 
 const GameDetailsPage = () => {
-    const {slug} = useParams()
-    const {data: game, isLoading, error} = useGame(slug!); // the char ! after a const tell ts compiler this const is never undefined.
+  const { slug } = useParams();
+  const { data: game, isLoading, error } = useGame(slug!); // the char ! after a const tell ts compiler this const is never undefined.
 
-    if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />;
 
-    if (error || !game) throw error;
+  if (error || !game) throw error;
 
-    return (
-        <>
-            <Heading>{game.name}</Heading>
-            <Text>{game.description_raw} </Text>
-        </>
-    )
-}
+  return (
+    <>
+      <Heading>{game.name}</Heading>
+      <ExpandableText>{game.description_raw}</ExpandableText>
+    </>
+  );
+};
 
 export default GameDetailsPage;
