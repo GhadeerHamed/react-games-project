@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CACHE_KEY_TRAILER } from "../services/constants";
 import ApiClient from "../services/api-client";
 
-import { Trailer } from "../entities/Trailer";
+import Trailer from "../entities/Trailer";
 
 const useTrailer = (gameId: number) => {
   const apiClient = new ApiClient<Trailer>(`/games/${gameId}/movies`);

@@ -3,7 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { CACHE_KEY_GAMES } from "../services/constants";
 import ms from "ms";
 import useGameQueryStore from "../store";
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 
 const apiClient = new ApiClient<Game>("/games");
 

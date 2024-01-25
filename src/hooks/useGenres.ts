@@ -3,7 +3,7 @@ import ms from "ms";
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api-client";
 import { CACHE_KEY_GENRES } from "../services/constants";
-import { Genre } from "../entities/genre";
+import Genre from "../entities/genre";
 
 const apiClient = new ApiClient<Genre>("/genres");
 

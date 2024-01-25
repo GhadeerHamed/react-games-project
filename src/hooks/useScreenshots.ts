@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CACHE_KEY_SCREENSHOTS } from "../services/constants";
 import ApiClient from "../services/api-client";
 
-import { Screenshot } from "../entities/Screenshot";
+import Screenshot from "../entities/Screenshot";
 
 const useScreenshots = (gameId: number) => {
   const apiClient = new ApiClient<Screenshot>(`/games/${gameId}/screenshots`);
